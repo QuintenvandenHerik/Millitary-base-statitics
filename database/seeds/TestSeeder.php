@@ -12,7 +12,7 @@ class TestSeeder extends Seeder
     public function run() {
     $faker = Faker\Factory::create();
 
-    for($i = 0; $i < 1000; $i++) {
+    for($i = 0; $i < 25; $i++) {
         App\Test::create([
             'soldier_name' => $faker->firstname,
             'soldier_lastname' => $faker->lastname,

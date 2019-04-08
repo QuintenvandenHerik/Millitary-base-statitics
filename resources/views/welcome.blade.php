@@ -5,10 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ge ttho thaa base</title>
+        <title>Get to The Base</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
         <!-- Styles -->
         <style>
@@ -62,6 +64,32 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .my-custom-scrollbar {
+                position: relative;
+                max-height: 75vh;
+                overflow-y: scroll;
+            }
+
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+            
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: none; 
+            }
+             
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #7D817B;
+                border-radius: 5px;
+            }
+            
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #7D817B; 
+            }
         </style>
     </head>
     <body>
@@ -79,23 +107,42 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Thaaa Base
+                    The Northern Base
                 </div>
-                <ul>
-                    @if(count($soldiers))
-                        @foreach($soldiers as $soldier)
-                        <li>
-                            {{ $soldier->soldier_name }}
-                            {{ $soldier->soldier_type }}
-                            {{ $soldier->created_at }}
-                        </li>
-                
-                        @endforeach
-                    @else
-                    No soldiers found in Tha Maaathership
-                    @endif
-                </ul>
-
+                <div class="my-custom-scrollbar">
+                    <table class="table table-wrapper-scroll-y table-striped table-dark mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">First name</th>
+                                <th scope="col">Last name</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">On Mission Since</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($soldiers))
+                            @foreach($soldiers as $soldier)
+                            <tr>
+                                <td>
+                                    {{ $soldier->soldier_name }}
+                                </td>
+                                <td>
+                                    {{ $soldier->soldier_lastname }}
+                                </td>
+                                <td>
+                                    {{ $soldier->soldier_type }}
+                                </td>
+                                <td>
+                                    {{ $soldier->created_at }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        @else
+                        No soldiers found in Tha Maaathership
+                        @endif
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
